@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Expenses App{% endblock %}</title>
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- Font Awesome CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Your CSS -->
+<link rel="stylesheet" href="{% static 'expenses/styles.css' %}">
+
+  </head>
+<body>
+<!-- Navbar -->
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{% url 'register' %}">
+      💰 Expenses App
+    </a>
+  </div>
+
+  <div class="navbar-start">
+      <a class="navbar-item" href="{% url 'dashboard' %}">Dashboard</a>
+      <a class="navbar-item" href="{% url 'income_list' %}">My Incomes</a>
+      <a class="navbar-item" href="{% url 'expense_list' %}">My Expenses</a>
+      <a class="navbar-item" href="{% url 'group_list' %}">Groups</a>
+      <a class="navbar-item" href="{% url 'label_list' %}">Labels</a>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-end">
+      {% if user.is_authenticated %}
+        <div class="navbar-item">
+          Hello, {{ user.username }}!
+        </div>
+        <div class="navbar-item">
+          <a class="button is-light" href="{% url 'logout' %}">Logout</a>
+        </div>
+      {% else %}
+        <div class="navbar-item">
+          <a class="button is-light" href="{% url 'login' %}">Login</a>
+        </div>
+        <div class="navbar-item">
+          <a class="button is-primary" href="{% url 'register' %}">Register</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</nav> 
+
+<section class="section">
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</section>
+
+</body>
+</html>
+

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<h1 class="title">Create an Account</h1>
+
+<form method="post" class="box">
+    {% csrf_token %}
+
+    <div class="field">
+        <label class="label">Username</label>
+        <div class="control">
+            {{ form.username|add_class:"input" }}
+        </div>
+        {% if form.username.errors %}
+            <p class="help is-danger">{{ form.username.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+            {{ form.password1|add_class:"input" }}
+        </div>
+        {% if form.password1.errors %}
+            <p class="help is-danger">{{ form.password1.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <label class="label">Confirm Password</label>
+        <div class="control">
+            {{ form.password2|add_class:"input" }}
+        </div>
+        {% if form.password2.errors %}
+            <p class="help is-danger">{{ form.password2.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <label class="label">Profession</label>
+        <div class="control">
+            {{ form.profession|add_class:"input" }}
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Kids</label>
+        <div class="control">
+            {{ form.kids|add_class:"input" }}
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Married</label>
+        <div class="control">
+            {{ form.wife }}
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">City</label>
+        <div class="control">
+            {{ form.city|add_class:"input" }}
+        </div>
+    </div>
+
+    <div class="field">
+        <button class="button is-primary" type="submit">Register</button>
+    </div>
+</form>
+
+<p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+{% endblock %}

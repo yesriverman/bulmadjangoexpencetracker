@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Add Group{% endblock %}
+{% block content %}
+<h1 class="title">Add New Group</h1>
+
+<form method="post" class="box">
+    {% csrf_token %}
+    <div class="field">
+        <label class="label">Group Name</label>
+        <div class="control">
+            {{ form.name|add_class:"input" }}
+        </div>
+        {% if form.name.errors %}
+            <p class="help is-danger">{{ form.name.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <button class="button is-primary" type="submit">Add Group</button>
+    </div>
+</form>
+
+<p><a href="{% url 'group_list' %}">Back to Groups List</a></p>
+{% endblock %}

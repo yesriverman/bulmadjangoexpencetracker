@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Labels List{% endblock %}
+{% block content %}
+<h1 class="title">Labels</h1>
+
+<table class="table is-striped is-hoverable is-fullwidth">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Label Name</th>
+            <th>Group</th>
+            <th>Monthly Expected Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for label in labels %}
+    <tr>
+        <td>{{ label.id }}</td>
+        <td>{{ label.name }}</td>
+        <td>{{ label.group.name }}</td>
+        <td>
+        {% if label.monthly_expected_amount %}
+            {{ label.monthly_expected_amount }}
+        {% else %}
+            -
+        {% endif %}
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4">No labels found.</td></tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+<p><a class="button is-link" href="{% url 'label_create' %}">Add New Label</a></p>
+{% endblock %}

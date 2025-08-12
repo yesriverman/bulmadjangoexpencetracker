@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Add Expense{% endblock %}
+{% block content %}
+<h1 class="title">Add New Expense</h1>
+
+<form method="post" class="box">
+    {% csrf_token %}
+
+    <div class="field">
+        <label class="label">Label</label>
+        <div class="control">
+            {{ form.label|add_class:"input" }}
+        </div>
+        {% if form.label.errors %}
+            <p class="help is-danger">{{ form.label.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <label class="label">Amount</label>
+        <div class="control">
+            {{ form.amount|add_class:"input" }}
+        </div>
+        {% if form.amount.errors %}
+            <p class="help is-danger">{{ form.amount.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <label class="label">Date</label>
+        <div class="control">
+            {{ form.date|add_class:"input" }}
+        </div>
+        {% if form.date.errors %}
+            <p class="help is-danger">{{ form.date.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <label class="label">Notes (optional)</label>
+        <div class="control">
+            {{ form.notes|add_class:"textarea" }}
+        </div>
+    </div>
+
+    <div class="field">
+
+        <button class="button is-primary" type="submit">Add Expense</button>
+    </div>
+</form>
+
+<p><a href="{% url 'expense_list' %}">View My Expenses</a></p>
+{% endblock %}

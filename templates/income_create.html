@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Add Income{% endblock %}
+{% block content %}
+<h1 class="title">Add Income</h1>
+
+<form method="post" class="box">
+    {% csrf_token %}
+
+    <div class="field">
+        <label class="label">Amount</label>
+        <div class="control">
+            {{ form.amount|add_class:"input" }}
+        </div>
+        {% if form.amount.errors %}
+            <p class="help is-danger">{{ form.amount.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <label class="label">Date</label>
+        <div class="control">
+            {{ form.date|add_class:"input" }}
+        </div>
+        {% if form.date.errors %}
+            <p class="help is-danger">{{ form.date.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <button class="button is-primary" type="submit">Add Income</button>
+    </div>
+</form>
+
+<p><a href="{% url 'expense_list' %}">View My Incomes</a></p>
+{% endblock %}
+

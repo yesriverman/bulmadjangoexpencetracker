@@ -1,0 +1,15 @@
+
+/* Styles for icons in tables */
+
+table i {font-size: 20px;/* increase size */ cursor: pointer; /* pointer cursor on hover */}
+/* Add space between icons */
+table a + a i {margin-left: 25px;/* space before the second icon */}
+/* Optional: smooth hover effect */
+table a:hover i {opacity: 0.7;}
+/* expenses/static/expenses/styles.css */
+.title {font-family: 'Comic Sans MS', cursive; font-weight: 700; /* Bold */}
+body {background-color: #f5f5f5; /* light grey */font-family: "Comic Sans MS", cursive, sans-serif;}
+form {display: flex; gap: 10px; align-items: center;}
+input, select, button { padding: 5px; font-size: 14px;}
+
+

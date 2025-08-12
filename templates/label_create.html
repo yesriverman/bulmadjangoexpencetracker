@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Add Label{% endblock %}
+{% block content %}
+<h1 class="title">Add New Label</h1>
+
+<form method="post" class="box">
+    {% csrf_token %}
+    <div class="field">
+        <label class="label">Label Name</label>
+        <div class="control">
+            {{ form.name|add_class:"input" }}
+        </div>
+        {% if form.name.errors %}
+            <p class="help is-danger">{{ form.name.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <label class="label">Group</label>
+        <div class="control">
+            {{ form.group|add_class:"input" }}
+        </div>
+        {% if form.group.errors %}
+            <p class="help is-danger">{{ form.group.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+
+    <div class="field">
+        <label class="label">Monthly Expected Amount (optional)</label>
+        <div class="control">
+            {{ form.monthly_expected_amount|add_class:"input" }}
+        </div>
+        {% if form.monthly_expected_amount.errors %}
+            <p class="help is-danger">{{ form.monthly_expected_amount.errors.0 }}</p>
+        {% endif %}
+    </div>
+
+
+    <div class="field">
+        <button class="button is-primary" type="submit">Add Label</button>
+    </div>
+</form>
+
+<p><a href="{% url 'label_list' %}">Back to Labels List</a></p>
+{% endblock %}
