@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 mkdir myshop
 cd myshop
 
@@ -54,3 +55,61 @@ env\Scripts\activate
 
 
 
+=======
+mkdir myshop
+cd myshop
+
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+
+pip install django djangorestframework
+
+
+django-admin startproject backend .
+python manage.py startapp shop
+
+In backend/settings.py, add to INSTALLED_APPS:
+python
+Copier
+Modifier
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+    'shop',
+]
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+
+
+python manage.py runserver
+
+
+
+python -m venv env
+env\Scripts\activate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 164dd20bc3fdadcbeca4f6de65952e60401df8fc
